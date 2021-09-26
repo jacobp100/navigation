@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Platform.OS === "android" ? BottomSheet : () => null;
+export default BottomSheet;
