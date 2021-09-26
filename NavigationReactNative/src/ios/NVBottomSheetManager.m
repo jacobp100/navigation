@@ -1,9 +1,13 @@
-//
-//  NVBottomSheetManager.m
-//  NavigationReactNative
-//
-//  Created by Graham Mendick on 24/09/2021.
-//  Copyright © 2021 Graham Mendick. All rights reserved.
-//
+#import "NVBottomSheetManager.h"
+#import "NVBottomSheetView.h"
 
-#import <Foundation/Foundation.h>
+@implementation NVBottomSheetManager
+
+RCT_EXPORT_MODULE()
+
+- (UIView *)view
+{
+    return [[NVBottomSheetView alloc] init];
+}
+
+@end
