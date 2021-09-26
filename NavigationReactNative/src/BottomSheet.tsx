@@ -12,7 +12,7 @@ class BottomSheet extends React.Component<any, any> {
     }
     static defaultProps = {
         draggable: true,
-        defaultDetent: (UIManager as any).getViewManagerConfig('NVBottomSheet').Constants.Detent.collapsed
+        defaultDetent: 'collapsed'
     }
     static getDerivedStateFromProps({detent}, {selectedDetent}) {
         if (detent != null && detent !== selectedDetent)
@@ -38,11 +38,10 @@ class BottomSheet extends React.Component<any, any> {
     }
     render() {
         var { expandedHeight, expandedOffset, peekHeight, halfExpandedRatio, hideable, skipCollapsed, draggable, children } = this.props
-        const detents = (UIManager as any).getViewManagerConfig('NVBottomSheet').Constants.Detent
         return (
             <NVBottomSheet
                 ref={this.ref}
-                detent={detents[this.state.selectedDetent]}
+                detent={this.state.selectedDetent}
                 peekHeight={peekHeight}
                 expandedOffset={expandedOffset}
                 fitToContents={expandedOffset == null}
