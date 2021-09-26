@@ -24,4 +24,10 @@
     [self.reactViewController presentViewController:_bottomSheetController animated:true completion:^{}];
 }
 
+- (void)insertReactSubview:(UIView *)subview atIndex:(NSInteger)atIndex
+{
+    [super insertReactSubview:subview atIndex:atIndex];
+    _bottomSheetController.view = subview;
+}
+
 @end
