@@ -55,7 +55,7 @@ class BottomSheet extends React.Component<any, any> {
                     styles.bottomSheet,
                     expandedHeight != null ? { height: expandedHeight, top: 0 } : null,
                     expandedOffset != null ? { top: expandedOffset, bottom: 0 } : null,
-                    expandedHeight == null && expandedOffset == null ? { top: 0, bottom: 0} : null
+                    Platform.OS === 'android' && expandedHeight == null && expandedOffset == null ? { top: 0, bottom: 0} : null
                 ]}
             >
                 {children}
@@ -69,9 +69,11 @@ var NVBottomSheet = requireNativeComponent<any>('NVBottomSheet', null);
 const styles = StyleSheet.create({
     bottomSheet: {
         position: 'absolute',
-        right: 0,
-        left: 0,
-        elevation: 5
+        ...Platform.select({
+            android: {
+                right: 0, left: 0, elevation: 5
+            },
+        })
     },
 });
 
