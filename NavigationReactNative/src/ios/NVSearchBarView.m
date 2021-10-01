@@ -24,8 +24,8 @@
         self.searchController.searchBar.semanticContentAttribute = ![[RCTI18nUtil sharedInstance] isRTL] ? UISemanticContentAttributeForceLeftToRight : UISemanticContentAttributeForceRightToLeft;
         self.searchController.searchResultsUpdater = self;
         __weak typeof(self) weakSelf = self;
-        viewController.boundsDidChangeBlock = ^(CGRect newBounds) {
-            [weakSelf notifyForBoundsChange:newBounds];
+        viewController.sizeDidChangeBlock = ^(CGSize newSize, id coordinator) {
+            [weakSelf notifyForSizeChange:newSize];
         };
     }
     return self;
@@ -75,10 +75,10 @@
     }
 }
 
-- (void)notifyForBoundsChange:(CGRect)newBounds
+- (void)notifyForSizeChange:(CGSize)newSize
 {
     if (_reactSubview) {
-        [_bridge.uiManager setSize:newBounds.size forView:_reactSubview];
+        [_bridge.uiManager setSize:newSize forView:_reactSubview];
     }
 }
 

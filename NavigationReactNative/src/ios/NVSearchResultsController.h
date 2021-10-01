@@ -2,6 +2,6 @@
 
 @interface NVSearchResultsController : UIViewController
 
-@property (nonatomic, copy) void (^boundsDidChangeBlock)(CGRect newBounds);
+@property (nonatomic, copy) void (^sizeDidChangeBlock)(CGSize newSize, id<UIViewControllerTransitionCoordinator> coordinator);
 
 @end
